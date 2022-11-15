@@ -1,0 +1,390 @@
+SQL> select * from PRODUCT;
+
+      P_ID P_NAME         MFG_YR     EXP_YR      PRICE        LOP               
+---------- ---------- ---------- ---------- ---------- ----------               
+       101 earphone         2017       2020     499.99          3               
+       102 speaker          2018       2022     899.49          4               
+       103 keyboard         2013       2020    1299.49          7               
+       104 monitor          2017       2030    9100.49         13               
+       105 hdd              2014       2030    3500.49         16               
+       106 mouse            2016       2022     500.49          6               
+       107 pen drive        2013       2022     300.49          9               
+
+7 rows selected.
+
+SQL> create view P1 as select * from product;
+
+View created.
+
+SQL> select * from P1;
+
+      P_ID P_NAME         MFG_YR     EXP_YR      PRICE        LOP               
+---------- ---------- ---------- ---------- ---------- ----------               
+       101 earphone         2017       2020     499.99          3               
+       102 speaker          2018       2022     899.49          4               
+       103 keyboard         2013       2020    1299.49          7               
+       104 monitor          2017       2030    9100.49         13               
+       105 hdd              2014       2030    3500.49         16               
+       106 mouse            2016       2022     500.49          6               
+       107 pen drive        2013       2022     300.49          9               
+
+7 rows selected.
+
+SQL> create view P2 as select p_id,p_name,price from P1 where mfg_yr=2017;
+
+View created.
+
+SQL> select * from P1;
+
+      P_ID P_NAME         MFG_YR     EXP_YR      PRICE        LOP               
+---------- ---------- ---------- ---------- ---------- ----------               
+       101 earphone         2017       2020     499.99          3               
+       102 speaker          2018       2022     899.49          4               
+       103 keyboard         2013       2020    1299.49          7               
+       104 monitor          2017       2030    9100.49         13               
+       105 hdd              2014       2030    3500.49         16               
+       106 mouse            2016       2022     500.49          6               
+       107 pen drive        2013       2022     300.49          9               
+
+7 rows selected.
+
+SQL> select * from P2;
+
+      P_ID P_NAME          PRICE                                                
+---------- ---------- ----------                                                
+       101 earphone       499.99                                                
+       104 monitor       9100.49                                                
+
+SQL> select * from PRODUCT;
+
+      P_ID P_NAME         MFG_YR     EXP_YR      PRICE        LOP               
+---------- ---------- ---------- ---------- ---------- ----------               
+       101 earphone         2017       2020     499.99          3               
+       102 speaker          2018       2022     899.49          4               
+       103 keyboard         2013       2020    1299.49          7               
+       104 monitor          2017       2030    9100.49         13               
+       105 hdd              2014       2030    3500.49         16               
+       106 mouse            2016       2022     500.49          6               
+       107 pen drive        2013       2022     300.49          9               
+
+7 rows selected.
+
+
+
+
+---------------------------
+
+
+
+
+
+
+SQL> spool off;
+SQL> spool off;
+SQL> spool off;
+SQL> create table PRODUCT(p_id number(3),p_name varchar2(15),color varchar2(10),mfg_yr number(4),exp_yr number(4),price number(7,2));
+create table PRODUCT(p_id number(3),p_name varchar2(15),color varchar2(10),mfg_yr number(4),exp_yr number(4),price number(7,2))
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL> drop table PRODUCT;
+
+Table dropped.
+
+SQL> create table PRODUCT(p_id number(3),p_name varchar2(15),color varchar2(10),mfg_yr number(4),exp_yr number(4),price number(7,2));
+
+Table created.
+
+SQL> desc PRODUCT;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ P_ID                                               NUMBER(3)
+ P_NAME                                             VARCHAR2(15)
+ COLOR                                              VARCHAR2(10)
+ MFG_YR                                             NUMBER(4)
+ EXP_YR                                             NUMBER(4)
+ PRICE                                              NUMBER(7,2)
+
+SQL> INSERT into PRODUCT values(100,'mobile','black',2015,2020,8499);
+
+1 row created.
+
+SQL> INSERT into PRODUCT values(101,'earphone','white',2017,2020,499.99);
+
+1 row created.
+
+SQL> INSERT into PRODUCT values(102,'speaker','red',2018,2022,899.49);
+
+1 row created.
+
+SQL> INSERT into PRODUCT values(103,'keyboard','black',2013,2020,1299.49);
+
+1 row created.
+
+SQL> INSERT into PRODUCT values(104,'monitor','blue',2017,2030,9100.49);
+
+1 row created.
+
+SQL> INSERT into PRODUCT values(105,'hdd','black',2014,2030,3500.49);
+
+1 row created.
+
+SQL> INSERT into PRODUCT values(106,'mouse','white',2016,2022,500.49);
+
+1 row created.
+
+SQL> INSERT into PRODUCT values(107,'pen drive','green',2013,2022,300.49);
+
+1 row created.
+
+SQL> create view p1 as SELECT * from PRODUCT;
+create view p1 as SELECT * from PRODUCT
+            *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL> drop view P1;
+
+View dropped.
+
+SQL> create view p1 as SELECT * from PRODUCT;
+
+View created.
+
+SQL> SELECT * from p1;
+
+      P_ID P_NAME          COLOR          MFG_YR     EXP_YR      PRICE          
+---------- --------------- ---------- ---------- ---------- ----------          
+       100 mobile          black            2015       2020       8499          
+       101 earphone        white            2017       2020     499.99          
+       102 speaker         red              2018       2022     899.49          
+       103 keyboard        black            2013       2020    1299.49          
+       104 monitor         blue             2017       2030    9100.49          
+       105 hdd             black            2014       2030    3500.49          
+       106 mouse           white            2016       2022     500.49          
+       107 pen drive       green            2013       2022     300.49          
+
+8 rows selected.
+
+SQL> create view p2 as SELECT p_id,p_name,price from p1 where mfg_yr=2017;
+create view p2 as SELECT p_id,p_name,price from p1 where mfg_yr=2017
+            *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL> drop view P2;
+
+View dropped.
+
+SQL> create view p2 as SELECT p_id,p_name,price from p1 where mfg_yr=2017;
+
+View created.
+
+SQL> SELECT * from p2;
+
+      P_ID P_NAME               PRICE                                           
+---------- --------------- ----------                                           
+       101 earphone            499.99                                           
+       104 monitor            9100.49                                           
+
+SQL> INSERT into p1 values(108,'printer','white',2017,2032,3000.49);
+
+1 row created.
+
+SQL>  SELECT * from p1;
+
+      P_ID P_NAME          COLOR          MFG_YR     EXP_YR      PRICE          
+---------- --------------- ---------- ---------- ---------- ----------          
+       100 mobile          black            2015       2020       8499          
+       101 earphone        white            2017       2020     499.99          
+       102 speaker         red              2018       2022     899.49          
+       103 keyboard        black            2013       2020    1299.49          
+       104 monitor         blue             2017       2030    9100.49          
+       105 hdd             black            2014       2030    3500.49          
+       106 mouse           white            2016       2022     500.49          
+       107 pen drive       green            2013       2022     300.49          
+       108 printer         white            2017       2032    3000.49          
+
+9 rows selected.
+
+SQL> SELECT * from PRODUCT;
+
+      P_ID P_NAME          COLOR          MFG_YR     EXP_YR      PRICE          
+---------- --------------- ---------- ---------- ---------- ----------          
+       100 mobile          black            2015       2020       8499          
+       101 earphone        white            2017       2020     499.99          
+       102 speaker         red              2018       2022     899.49          
+       103 keyboard        black            2013       2020    1299.49          
+       104 monitor         blue             2017       2030    9100.49          
+       105 hdd             black            2014       2030    3500.49          
+       106 mouse           white            2016       2022     500.49          
+       107 pen drive       green            2013       2022     300.49          
+       108 printer         white            2017       2032    3000.49          
+
+9 rows selected.
+
+SQL> update p1 set price=5000 where p_id=105;
+
+1 row updated.
+
+SQL>  SELECT * from PRODUCT;
+
+      P_ID P_NAME          COLOR          MFG_YR     EXP_YR      PRICE          
+---------- --------------- ---------- ---------- ---------- ----------          
+       100 mobile          black            2015       2020       8499          
+       101 earphone        white            2017       2020     499.99          
+       102 speaker         red              2018       2022     899.49          
+       103 keyboard        black            2013       2020    1299.49          
+       104 monitor         blue             2017       2030    9100.49          
+       105 hdd             black            2014       2030       5000          
+       106 mouse           white            2016       2022     500.49          
+       107 pen drive       green            2013       2022     300.49          
+       108 printer         white            2017       2032    3000.49          
+
+9 rows selected.
+
+SQL>  SELECT * from p1;
+
+      P_ID P_NAME          COLOR          MFG_YR     EXP_YR      PRICE          
+---------- --------------- ---------- ---------- ---------- ----------          
+       100 mobile          black            2015       2020       8499          
+       101 earphone        white            2017       2020     499.99          
+       102 speaker         red              2018       2022     899.49          
+       103 keyboard        black            2013       2020    1299.49          
+       104 monitor         blue             2017       2030    9100.49          
+       105 hdd             black            2014       2030       5000          
+       106 mouse           white            2016       2022     500.49          
+       107 pen drive       green            2013       2022     300.49          
+       108 printer         white            2017       2032    3000.49          
+
+9 rows selected.
+
+SQL> delete from p1 where p_name='speaker';
+
+1 row deleted.
+
+SQL>  SELECT * from p1;
+
+      P_ID P_NAME          COLOR          MFG_YR     EXP_YR      PRICE          
+---------- --------------- ---------- ---------- ---------- ----------          
+       100 mobile          black            2015       2020       8499          
+       101 earphone        white            2017       2020     499.99          
+       103 keyboard        black            2013       2020    1299.49          
+       104 monitor         blue             2017       2030    9100.49          
+       105 hdd             black            2014       2030       5000          
+       106 mouse           white            2016       2022     500.49          
+       107 pen drive       green            2013       2022     300.49          
+       108 printer         white            2017       2032    3000.49          
+
+8 rows selected.
+
+SQL> SELECT * from PRODUCT;
+
+      P_ID P_NAME          COLOR          MFG_YR     EXP_YR      PRICE          
+---------- --------------- ---------- ---------- ---------- ----------          
+       100 mobile          black            2015       2020       8499          
+       101 earphone        white            2017       2020     499.99          
+       103 keyboard        black            2013       2020    1299.49          
+       104 monitor         blue             2017       2030    9100.49          
+       105 hdd             black            2014       2030       5000          
+       106 mouse           white            2016       2022     500.49          
+       107 pen drive       green            2013       2022     300.49          
+       108 printer         white            2017       2032    3000.49          
+
+8 rows selected.
+
+SQL> create view p3 as SELECT * from PRODUCT with read only constraint read_only;
+
+View created.
+
+SQL> SELECT * from p3;
+
+      P_ID P_NAME          COLOR          MFG_YR     EXP_YR      PRICE          
+---------- --------------- ---------- ---------- ---------- ----------          
+       100 mobile          black            2015       2020       8499          
+       101 earphone        white            2017       2020     499.99          
+       103 keyboard        black            2013       2020    1299.49          
+       104 monitor         blue             2017       2030    9100.49          
+       105 hdd             black            2014       2030       5000          
+       106 mouse           white            2016       2022     500.49          
+       107 pen drive       green            2013       2022     300.49          
+       108 printer         white            2017       2032    3000.49          
+
+8 rows selected.
+
+SQL> drop view p2;
+
+View dropped.
+
+SQL> SELECT * from p2;
+SELECT * from p2
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> alter table PRODUCT add brand varchar2(5);
+
+Table altered.
+
+SQL> update PRODUCT set brand='HP';
+
+8 rows updated.
+
+SQL> SELECT * from PRODUCT;
+
+      P_ID P_NAME          COLOR          MFG_YR     EXP_YR      PRICE BRAND    
+---------- --------------- ---------- ---------- ---------- ---------- -----    
+       100 mobile          black            2015       2020       8499 HP       
+       101 earphone        white            2017       2020     499.99 HP       
+       103 keyboard        black            2013       2020    1299.49 HP       
+       104 monitor         blue             2017       2030    9100.49 HP       
+       105 hdd             black            2014       2030       5000 HP       
+       106 mouse           white            2016       2022     500.49 HP       
+       107 pen drive       green            2013       2022     300.49 HP       
+       108 printer         white            2017       2032    3000.49 HP       
+
+8 rows selected.
+
+SQL> create view p4 as SELECT * from PRODUCT;
+
+View created.
+
+SQL> SELECT * from p4;
+
+      P_ID P_NAME          COLOR          MFG_YR     EXP_YR      PRICE BRAND    
+---------- --------------- ---------- ---------- ---------- ---------- -----    
+       100 mobile          black            2015       2020       8499 HP       
+       101 earphone        white            2017       2020     499.99 HP       
+       103 keyboard        black            2013       2020    1299.49 HP       
+       104 monitor         blue             2017       2030    9100.49 HP       
+       105 hdd             black            2014       2030       5000 HP       
+       106 mouse           white            2016       2022     500.49 HP       
+       107 pen drive       green            2013       2022     300.49 HP       
+       108 printer         white            2017       2032    3000.49 HP       
+
+8 rows selected.
+
+SQL> 105 id one
+SQL> delete from p3 where p_id=105;
+delete from p3 where p_id=105
+            *
+ERROR at line 1:
+ORA-42399: cannot perform a DML operation on a read-only view 
+
+
+SQL> create view p5 as SELECT exp_yr,avg(price) average_price from PRODUCT where price<5000 group by exp_yr having avg(price)>1000;
+
+View created.
+
+SQL>  SELECT * from p5;
+
+    EXP_YR AVERAGE_PRICE                                                        
+---------- -------------                                                        
+      2032       3000.49                                                        
+
+SQL> spool off;

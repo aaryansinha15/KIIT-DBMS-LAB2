@@ -1,0 +1,515 @@
+SQL> create table DEPARTMENT(d_id varchar2(5) primary key,d_name varchar2(15),campus number(3));
+
+Table created.
+
+SQL> insert into DEPARTMENT values('D01','CSE',15);
+
+1 row created.
+
+SQL> insert into DEPARTMENT values('D02','IT',15);
+
+1 row created.
+
+SQL>  insert into department values('D03','CSCE',15);
+
+1 row created.
+
+SQL>  insert into department values('D04','CSSE',15);
+
+1 row created.
+
+SQL>  insert into department values('D05','ARCH',7);
+
+1 row created.
+
+SQL>  insert into department values('D06','ETC',12);
+
+1 row created.
+
+SQL>  insert into department values('D07','EI',12);
+
+1 row created.
+
+SQL>  insert into department values('D08','CIVIL',3);
+
+1 row created.
+
+SQL> insert into department values('D09','EEE',3);
+
+1 row created.
+
+SQL>  insert into department values('D10','HR',4);
+
+1 row created.
+
+SQL>  insert into department values('D11','ACCOUNTS',4);
+
+1 row created.
+
+SQL>  insert into department values('D12','ADMIN',4);
+
+1 row created.
+
+SQL>  insert into department values('D13','ADMISSION',1);
+
+1 row created.
+
+SQL>  insert into department values('D14','MEDICAL',5);
+
+1 row created.
+
+SQL>  insert into department values('D15','MGMT',5);
+
+1 row created.
+
+SQL> select * from DEPARTMENT;
+
+D_ID  D_NAME              CAMPUS                                                
+----- --------------- ----------                                                
+D01   CSE                     15                                                
+D02   IT                      15                                                
+D03   CSCE                    15                                                
+D04   CSSE                    15                                                
+D05   ARCH                     7                                                
+D06   ETC                     12                                                
+D07   EI                      12                                                
+D08   CIVIL                    3                                                
+D09   EEE                      3                                                
+D10   HR                       4                                                
+D11   ACCOUNTS                 4                                                
+
+D_ID  D_NAME              CAMPUS                                                
+----- --------------- ----------                                                
+D12   ADMIN                    4                                                
+D13   ADMISSION                1                                                
+D14   MEDICAL                  5                                                
+D15   MGMT                     5                                                
+
+15 rows selected.
+
+SQL> create table EMPLOYEES(emp_id varchar2(5) primary key,emp_name varchar2(6),salary number(8),d_id varchar2(5) references DEPARTMENT(d_id) on delete cascade);
+
+Table created.
+
+SQL> insert into EMPLOYEES values('E01','ABC',20000,'D01');
+
+1 row created.
+
+SQL> insert into EMPLOYEES values('E02','BCD',25000,'D01');
+
+1 row created.
+
+SQL> insert into EMPLOYEES values('E03','CDE',30000,'D02');
+
+1 row created.
+
+SQL> insert into EMPLOYEES values('E04','DEF',35000,'D02');
+
+1 row created.
+
+SQL> insert into EMPLOYEES values('E05','EFG',40000,'D03');
+
+1 row created.
+
+SQL> insert into EMPLOYEES values('E06','FGH',45000,'D03');
+
+1 row created.
+
+SQL> insert into EMPLOYEES values('E07','GHI',50000,'D04');
+
+1 row created.
+
+SQL> insert into EMPLOYEES values('E08','HIJ',55000,'D04');
+
+1 row created.
+
+SQL> insert into EMPLOYEES values('E09','IJK',60000,'D05');
+
+1 row created.
+
+SQL> insert into EMPLOYEES values('E10','JKL',20000,'D05');
+
+1 row created.
+
+SQL> insert into EMPLOYEES values('E11','KLM',25000,'D06');
+
+1 row created.
+
+SQL> insert into EMPLOYEES values('E12','LMN',30000,'D06');
+
+1 row created.
+
+SQL> insert into EMPLOYEES values('E13','MNO',35000,'D07');
+
+1 row created.
+
+SQL> insert into EMPLOYEES values('E14','NOP',40000,'D07');
+
+1 row created.
+
+SQL> insert into EMPLOYEES values('E15','OPQ',45000,'D08');
+
+1 row created.
+
+SQL> insert into EMPLOYEES values('E16','PQR',50000,'D08');
+
+1 row created.
+
+SQL> insert into EMPLOYEES values('E17','QRS',55000,'D09');
+
+1 row created.
+
+SQL> insert into EMPLOYEES values('E18','RST',60000,'D09');
+
+1 row created.
+
+SQL> insert into EMPLOYEES values('E19','STU',20000,'D10');
+
+1 row created.
+
+SQL> insert into EMPLOYEES values('E20','TUV',25000,'D10');
+
+1 row created.
+
+SQL> insert into EMPLOYEES values('E21','UVW',30000,'D11');
+
+1 row created.
+
+SQL> insert into EMPLOYEES values('E22','VWX',35000,'D11');
+
+1 row created.
+
+SQL> insert into EMPLOYEES values('E23','WXY',40000,'D12');
+
+1 row created.
+
+SQL> insert into EMPLOYEES values('E24','XYZ',45000,'D12');
+
+1 row created.
+
+SQL> insert into EMPLOYEES values('E25','YZA',50000,'D13');
+
+1 row created.
+
+SQL> insert into EMPLOYEES values('E26','ZAB',55000,'D13');
+
+1 row created.
+
+SQL> insert into EMPLOYEES values('E27','AAB',60000,'D14');
+
+1 row created.
+
+SQL> insert into EMPLOYEES values('E28','AAC',20000,'D14');
+
+1 row created.
+
+SQL> insert into EMPLOYEES values('E29','AAD',25000,'D15');
+
+1 row created.
+
+SQL> insert into EMPLOYEES values('E30','AAE',30000,'D15');
+
+1 row created.
+
+SQL> select * from EMPLOYEES;
+
+EMP_I EMP_NA     SALARY D_ID                                                    
+----- ------ ---------- -----                                                   
+E01   ABC         20000 D01                                                     
+E02   BCD         25000 D01                                                     
+E03   CDE         30000 D02                                                     
+E04   DEF         35000 D02                                                     
+E05   EFG         40000 D03                                                     
+E06   FGH         45000 D03                                                     
+E07   GHI         50000 D04                                                     
+E08   HIJ         55000 D04                                                     
+E09   IJK         60000 D05                                                     
+E10   JKL         20000 D05                                                     
+E11   KLM         25000 D06                                                     
+
+EMP_I EMP_NA     SALARY D_ID                                                    
+----- ------ ---------- -----                                                   
+E12   LMN         30000 D06                                                     
+E13   MNO         35000 D07                                                     
+E14   NOP         40000 D07                                                     
+E15   OPQ         45000 D08                                                     
+E16   PQR         50000 D08                                                     
+E17   QRS         55000 D09                                                     
+E18   RST         60000 D09                                                     
+E19   STU         20000 D10                                                     
+E20   TUV         25000 D10                                                     
+E21   UVW         30000 D11                                                     
+E22   VWX         35000 D11                                                     
+
+EMP_I EMP_NA     SALARY D_ID                                                    
+----- ------ ---------- -----                                                   
+E23   WXY         40000 D12                                                     
+E24   XYZ         45000 D12                                                     
+E25   YZA         50000 D13                                                     
+E26   ZAB         55000 D13                                                     
+E27   AAB         60000 D14                                                     
+E28   AAC         20000 D14                                                     
+E29   AAD         25000 D15                                                     
+E30   AAE         30000 D15                                                     
+
+30 rows selected.
+
+SQL> select * from EMPLOYEES where salary=(select max(salary)from EMPLOYEES);
+
+EMP_I EMP_NA     SALARY D_ID                                                    
+----- ------ ---------- -----                                                   
+E09   IJK         60000 D05                                                     
+E18   RST         60000 D09                                                     
+E27   AAB         60000 D14                                                     
+
+SQL> select * from Employees where salary<(select avg(salary) from EMPLOYEES);
+
+EMP_I EMP_NA     SALARY D_ID                                                    
+----- ------ ---------- -----                                                   
+E01   ABC         20000 D01                                                     
+E02   BCD         25000 D01                                                     
+E03   CDE         30000 D02                                                     
+E04   DEF         35000 D02                                                     
+E10   JKL         20000 D05                                                     
+E11   KLM         25000 D06                                                     
+E12   LMN         30000 D06                                                     
+E13   MNO         35000 D07                                                     
+E19   STU         20000 D10                                                     
+E20   TUV         25000 D10                                                     
+E21   UVW         30000 D11                                                     
+
+EMP_I EMP_NA     SALARY D_ID                                                    
+----- ------ ---------- -----                                                   
+E22   VWX         35000 D11                                                     
+E28   AAC         20000 D14                                                     
+E29   AAD         25000 D15                                                     
+E30   AAE         30000 D15                                                     
+
+15 rows selected.
+
+SQL> select d_id from DEPARTMENT where campus=15;
+
+D_ID                                                                            
+-----                                                                           
+D01                                                                             
+D02                                                                             
+D03                                                                             
+D04                                                                             
+
+SQL> select emp_id,emp_name from EMPLOYEES e where e.d_id in(select d_id from DEPARTMENT where campus=15);
+
+EMP_I EMP_NA                                                                    
+----- ------                                                                    
+E01   ABC                                                                       
+E02   BCD                                                                       
+E03   CDE                                                                       
+E04   DEF                                                                       
+E05   EFG                                                                       
+E06   FGH                                                                       
+E07   GHI                                                                       
+E08   HIJ                                                                       
+
+8 rows selected.
+
+SQL> spool off;
+
+
+SQL> select emp_id,emp_name from employees e4 where e4.d_id  IN(select d1.d_id from department d1 where campus NOT IN(5,7,4,12));
+
+EMP_I EMP_NA                                                                    
+----- ------                                                                    
+E01   ABC                                                                       
+E02   BCD                                                                       
+E03   CDE                                                                       
+E04   DEF                                                                       
+E05   EFG                                                                       
+E06   FGH                                                                       
+E07   GHI                                                                       
+E08   HIJ                                                                       
+E15   OPQ                                                                       
+E16   PQR                                                                       
+E17   QRS                                                                       
+
+EMP_I EMP_NA                                                                    
+----- ------                                                                    
+E18   RST                                                                       
+E25   YZA                                                                       
+E26   ZAB                                                                       
+
+14 rows selected.
+
+SQL> select d_id from department d1 where d1.d_id in(select e4.d_id from employees e4 where salary>40000);
+
+D_ID                                                                            
+-----                                                                           
+D03                                                                             
+D04                                                                             
+D05                                                                             
+D08                                                                             
+D09                                                                             
+D12                                                                             
+D13                                                                             
+D14                                                                             
+
+8 rows selected.
+
+SQL> select distinct(d_id)from employees where d_id not in(select d_id from employees where salary > 30000);
+
+D_ID                                                                            
+-----                                                                           
+D10                                                                             
+D15                                                                             
+D01                                                                             
+D06                                                                             
+
+SQL> select emp_id from employees where salary > all(select distinct(min(salary)) from employees group by d_id);
+
+EMP_I                                                                           
+-----                                                                           
+E09                                                                             
+E18                                                                             
+E27                                                                             
+
+SQL> select avg(total_avg_salary) from (select avg(salary) as total_avg_salary from employees group by d_id);
+
+AVG(TOTAL_AVG_SALARY)                                                           
+---------------------                                                           
+                38500                                                           
+
+
+SQL> select emp_id,emp_name,salary,d_id,(select avg(salary) from employees)as avg_sal,abs((select avg(salary) from employees)-salary)as difference from employees;
+
+EMP_I EMP_NA     SALARY D_ID     AVG_SAL DIFFERENCE                             
+----- ------ ---------- ----- ---------- ----------                             
+E01   ABC         20000 D01        38500      18500                             
+E02   BCD         25000 D01        38500      13500                             
+E03   CDE         30000 D02        38500       8500                             
+E04   DEF         35000 D02        38500       3500                             
+E05   EFG         40000 D03        38500       1500                             
+E06   FGH         45000 D03        38500       6500                             
+E07   GHI         50000 D04        38500      11500                             
+E08   HIJ         55000 D04        38500      16500                             
+E09   IJK         60000 D05        38500      21500                             
+E10   JKL         20000 D05        38500      18500                             
+E11   KLM         25000 D06        38500      13500                             
+
+EMP_I EMP_NA     SALARY D_ID     AVG_SAL DIFFERENCE                             
+----- ------ ---------- ----- ---------- ----------                             
+E12   LMN         30000 D06        38500       8500                             
+E13   MNO         35000 D07        38500       3500                             
+E14   NOP         40000 D07        38500       1500                             
+E15   OPQ         45000 D08        38500       6500                             
+E16   PQR         50000 D08        38500      11500                             
+E17   QRS         55000 D09        38500      16500                             
+E18   RST         60000 D09        38500      21500                             
+E19   STU         20000 D10        38500      18500                             
+E20   TUV         25000 D10        38500      13500                             
+E21   UVW         30000 D11        38500       8500                             
+E22   VWX         35000 D11        38500       3500                             
+
+EMP_I EMP_NA     SALARY D_ID     AVG_SAL DIFFERENCE                             
+----- ------ ---------- ----- ---------- ----------                             
+E23   WXY         40000 D12        38500       1500                             
+E24   XYZ         45000 D12        38500       6500                             
+E25   YZA         50000 D13        38500      11500                             
+E26   ZAB         55000 D13        38500      16500                             
+E27   AAB         60000 D14        38500      21500                             
+E28   AAC         20000 D14        38500      18500                             
+E29   AAD         25000 D15        38500      13500                             
+E30   AAE         30000 D15        38500       8500                             
+
+30 rows selected.
+
+SQL> insert into employees(emp_id,emp_name,d_id)values('E31','AAF','D15');
+
+1 row created.
+
+SQL> SELECT * FROM EMPLOYEES;
+
+EMP_I EMP_NA     SALARY D_ID                                                    
+----- ------ ---------- -----                                                   
+E01   ABC         20000 D01                                                     
+E02   BCD         25000 D01                                                     
+E03   CDE         30000 D02                                                     
+E04   DEF         35000 D02                                                     
+E05   EFG         40000 D03                                                     
+E06   FGH         45000 D03                                                     
+E07   GHI         50000 D04                                                     
+E08   HIJ         55000 D04                                                     
+E09   IJK         60000 D05                                                     
+E10   JKL         20000 D05                                                     
+E11   KLM         25000 D06                                                     
+
+EMP_I EMP_NA     SALARY D_ID                                                    
+----- ------ ---------- -----                                                   
+E12   LMN         30000 D06                                                     
+E13   MNO         35000 D07                                                     
+E14   NOP         40000 D07                                                     
+E15   OPQ         45000 D08                                                     
+E16   PQR         50000 D08                                                     
+E17   QRS         55000 D09                                                     
+E18   RST         60000 D09                                                     
+E19   STU         20000 D10                                                     
+E20   TUV         25000 D10                                                     
+E21   UVW         30000 D11                                                     
+E22   VWX         35000 D11                                                     
+
+EMP_I EMP_NA     SALARY D_ID                                                    
+----- ------ ---------- -----                                                   
+E23   WXY         40000 D12                                                     
+E24   XYZ         45000 D12                                                     
+E25   YZA         50000 D13                                                     
+E26   ZAB         55000 D13                                                     
+E27   AAB         60000 D14                                                     
+E28   AAC         20000 D14                                                     
+E29   AAD         25000 D15                                                     
+E30   AAE         30000 D15                                                     
+E31   AAF               D15                                                     
+
+31 rows selected.
+
+SQL> DELETE FROM EMPLOYEES WHERE SALARY>(SELECT AVG(SALARY)FROM EMPLOYEES);
+
+15 rows deleted.
+
+SQL> SELECT * FROM EMPLOYEES;
+
+EMP_I EMP_NA     SALARY D_ID                                                    
+----- ------ ---------- -----                                                   
+E01   ABC         20000 D01                                                     
+E02   BCD         25000 D01                                                     
+E03   CDE         30000 D02                                                     
+E04   DEF         35000 D02                                                     
+E10   JKL         20000 D05                                                     
+E11   KLM         25000 D06                                                     
+E12   LMN         30000 D06                                                     
+E13   MNO         35000 D07                                                     
+E19   STU         20000 D10                                                     
+E20   TUV         25000 D10                                                     
+E21   UVW         30000 D11                                                     
+
+EMP_I EMP_NA     SALARY D_ID                                                    
+----- ------ ---------- -----                                                   
+E22   VWX         35000 D11                                                     
+E28   AAC         20000 D14                                                     
+E29   AAD         25000 D15                                                     
+E30   AAE         30000 D15                                                     
+E31   AAF               D15                                                     
+
+16 rows selected.
+
+SQL> SELECT EMP_ID,EMP_NAME FROM(SELECT * FROM EMPLOYEES WHERE  ROWNUM<=5)ORDER BY EMP_ID DESC;
+
+EMP_I EMP_NA                                                                    
+----- ------                                                                    
+E10   JKL                                                                       
+E04   DEF                                                                       
+E03   CDE                                                                       
+E02   BCD                                                                       
+E01   ABC                                                                       
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> SPOOL OFF;
